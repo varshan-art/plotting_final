@@ -132,7 +132,6 @@ plt.show()
 
 ## OUTPUT:
 
-*(Paste the execution output showing the dataset information, statistical summary, and generated Line Graph, Bar Chart, Pie Chart, Scatter Plot, and Histogram.)*
 <img width="688" height="707" alt="image" src="https://github.com/user-attachments/assets/0d321afa-f466-4628-ace6-8dac31e93609" />
 <img width="700" height="547" alt="image" src="https://github.com/user-attachments/assets/4b28e7eb-c705-4aea-9796-f1bcfbcc3573" />
 <img width="677" height="602" alt="image" src="https://github.com/user-attachments/assets/be39fcc6-2f46-4729-a400-2bf4dbe0ed20" />
