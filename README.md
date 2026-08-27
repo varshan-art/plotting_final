@@ -1,6 +1,6 @@
 # # Exp 6 Analysis and Visualization of COVID-19 Dataset using Python
 
-**Date:**
+**Date:27/08/2026**
 
 ## AIM:
 
@@ -51,12 +51,94 @@ Add appropriate titles, axis labels, legends, and other necessary labels to the 
 Execute the program and analyze the generated visualizations to identify meaningful trends and relationships in the COVID-19 dataset.
 
 ## PROGRAM:
+~~~
+import pandas as pd
+import matplotlib.pyplot as plt
 
-*(Paste the Python code for COVID-19 Dataset Analysis and Visualization here.)*
+# Load dataset
+data = pd.read_csv("covid_case.csv")
+
+# Display basic information
+print("First 5 rows:")
+print(data.head())
+
+print("\nDataset Shape:")
+print(data.shape)
+
+print("\nColumn Names:")
+print(data.columns)
+
+# Check missing values
+print("\nMissing Values:")
+print(data.isnull().sum())
+
+# Remove missing values
+data = data.dropna()
+
+# Convert Date column to datetime
+data['Date'] = pd.to_datetime(data['Date'])
+
+# Total number of records
+print("\nTotal Records:", len(data))
+
+# Statistical summary
+print("\nStatistical Summary:")
+print(data.describe())
+
+# Line Graph: Global confirmed cases over time
+global_cases = data.groupby('Date')['Confirmed'].sum()
+
+plt.figure()
+plt.plot(global_cases.index, global_cases.values)
+plt.title("Global Confirmed COVID-19 Cases Over Time")
+plt.xlabel("Date")
+plt.ylabel("Confirmed Cases")
+plt.show()
+
+# Bar Chart: Top 10 countries by confirmed cases
+top10 = data.groupby('Country')['Confirmed'].sum().sort_values(ascending=False).head(10)
+
+plt.figure()
+top10.plot(kind='bar')
+plt.title("Top 10 Countries by Confirmed Cases")
+plt.xlabel("Country")
+plt.ylabel("Confirmed Cases")
+plt.show()
+
+# Pie Chart: Top 5 affected countries
+top5 = data.groupby('Country')['Confirmed'].sum().sort_values(ascending=False).head(5)
+
+plt.figure()
+plt.pie(top5, labels=top5.index, autopct='%1.1f%%')
+plt.title("Top 5 Countries Case Distribution")
+plt.show()
+
+# Scatter Plot: Confirmed vs Deaths
+plt.figure()
+plt.scatter(data['Confirmed'], data['Deaths'])
+plt.title("Confirmed Cases vs Deaths")
+plt.xlabel("Confirmed Cases")
+plt.ylabel("Deaths")
+plt.show()
+
+# Histogram: Distribution of active cases
+plt.figure()
+plt.hist(data['Active'], bins=20)
+plt.title("Distribution of Active Cases")
+plt.xlabel("Active Cases")
+plt.ylabel("Frequency")
+plt.show()
+~~~
 
 ## OUTPUT:
 
 *(Paste the execution output showing the dataset information, statistical summary, and generated Line Graph, Bar Chart, Pie Chart, Scatter Plot, and Histogram.)*
+<img width="688" height="707" alt="image" src="https://github.com/user-attachments/assets/0d321afa-f466-4628-ace6-8dac31e93609" />
+<img width="700" height="547" alt="image" src="https://github.com/user-attachments/assets/4b28e7eb-c705-4aea-9796-f1bcfbcc3573" />
+<img width="677" height="602" alt="image" src="https://github.com/user-attachments/assets/be39fcc6-2f46-4729-a400-2bf4dbe0ed20" />
+<img width="512" height="487" alt="image" src="https://github.com/user-attachments/assets/4c4e2c30-0d1f-44a7-bed7-7c58bd1a139f" />
+<img width="717" height="546" alt="image" src="https://github.com/user-attachments/assets/9fc0b976-8cec-491e-b44e-8545c233f38c" />
+<img width="697" height="552" alt="image" src="https://github.com/user-attachments/assets/da03e895-f19f-44d8-9010-7bf4c9afb618" />
 
 ## RESULT:
 
